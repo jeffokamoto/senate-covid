@@ -18,7 +18,7 @@ my $count = 1000;
 
 # count_current();
 
-print STDOUT "\"Dem/Ind Prob\",\"GOP Prob\",\"GOP Senators Number\",\"GOP Senators\"\n";
+print STDOUT "\"Dem/Ind Prob\",\"GOP Prob\",\"GOP Senators Number\",\"GOP Senators\",\"GOP Majority\"\n";
 for my $dodds (qw(0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95)) {
     for my $rodds (qw(0.05 0.1 0.15 0.2 0.25 0.3 0.35 0.4 0.45 0.5 0.55 0.6 0.65 0.7 0.75 0.8 0.85 0.9 0.95)) {
         print STDERR ".";
@@ -39,7 +39,7 @@ sub load_data {
 sub count_current {
     my ($d, $r, $i);
     $d = 0; $i =  0; $r = 0;
-    my %total = ( d => \$d, i => \$i, r => \$r );
+    my %total = ( Dem => \$d, Ind => \$i, GOP => \$r );
     for my $l (@data) {
         my ($state, $govp, $party, $age, $name)  = split(/,/, $l);
         ${ $total{$party} }++;
@@ -63,10 +63,10 @@ sub replace_by_age  {
     my ($dd, $rd, $id);
     my ($dr, $rr, $ir);
     my @r;
-    my %total = ( d => \$d, i => \$i, r => \$r );
-    my %dead = ( d => \$dd, i => \$id, r => \$rd );
-    my %replaced = ( d => \$dr, i => \$ir, r => \$rr );
-    my %death_chances = ( d => \$dodds, i => \$iodds, r => \$rodds );
+    my %total = ( Dem => \$d, Ind => \$i, GOP => \$r );
+    my %dead = ( Dem => \$dd, Ind => \$id, GOP => \$rd );
+    my %replaced = ( Dem => \$dr, Ind => \$ir, GOP => \$rr );
+    my %death_chances = ( Dem => \$dodds, Ind => \$iodds, GOP => \$rodds );
 
     for my $i (1..$count) {
         $d = 0; $i =  0; $r = 0;
@@ -95,5 +95,5 @@ sub replace_by_age  {
     # print "@r\n";
     my $r_avg = avg(\@r);
     my $r_round = int($r_avg + 0.5);
-    return join(',', $dodds, $rodds, $r_avg, $r_round);
+    return join(',', $dodds, $rodds, $r_avg, $r_round, $r_round - 50);
 }
