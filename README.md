@@ -22,13 +22,13 @@ are likely to take) and an age cutoff, whereby we assume that all senators
 up to that age are not going to die (but might still be infected), and that
 all senators above that age will be infected and will die based on the
 specified probability. Obviously this is highly simplified as it ignores
-existing comorbities of each senator and uses only one probability for
+existing comorbidities of each senator and uses only one probability for
 dying.
 
 The script generates a CSV file consisting of the two probabilities (I
 am assuming the probabilities for the two Independent senators are the
 same as for Democratic senators), the average number of GOP senators
-that would be in the senate, and that same number rounded.
+that would be in the Senate, and that same number rounded.
 
 I then used a Jupyter notebook to assist with visualizing the resulting
 Senate. I'm still working on getting it to look the way I want it to.
