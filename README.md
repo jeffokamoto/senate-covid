@@ -32,3 +32,7 @@ that would be in the Senate, and that same number rounded.
 
 I then used a Jupyter notebook to assist with visualizing the resulting
 Senate. I'm still working on getting it to look the way I want it to.
+
+## Sample Output
+
+![Sample Image](output.png)
